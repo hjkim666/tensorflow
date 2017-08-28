@@ -1,0 +1,6 @@
+$sudo apt-get install python-dev python-pip python-numpy python-pandas
+$sudo pip install numpy 
+$sudo pip install matplotlib
+$?sudo pip?install scikit-learn
+$?sudo?pip install "ipython[notebook]"
+$ sudo ipython notebook
