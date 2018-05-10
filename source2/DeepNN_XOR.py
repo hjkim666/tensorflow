@@ -1,28 +1,23 @@
 import numpy as np
 import tensorflow as tf
 
-xy = np.loadtxt('07train.txt')
+xy = np.loadtxt('07train.txt', unpack=True)
 
-x_data =  xy[:,0:-1]
-y_data = xy[:,[-1]]
-print(x_data.shape)
-print(y_data.shape)
+x_data = np.transpose( xy[0:-1] )
+y_data = np.reshape( xy[-1], (4,1) )
 
 X = tf.placeholder(tf.float32)
 Y = tf.placeholder(tf.float32)
 
-W1 = tf.Variable(tf.random_uniform( [2,5], -1.0, 1.0))
-W2 = tf.Variable(tf.random_uniform( [5,4], -1.0, 1.0))
-W3 = tf.Variable(tf.random_uniform( [4,1], -1.0, 1.0))
+W1 = tf.Variable(tf.random_uniform( [2,2], -1.0, 1.0))
+W2 = tf.Variable(tf.random_uniform( [2,1], -1.0, 1.0))
 
-b1 = tf.Variable(tf.zeros([5]), name="Bias1")
-b2 = tf.Variable(tf.zeros([4]), name="Bias2")
-b3 = tf.Variable(tf.zeros([1]), name="Bias3")
+b1 = tf.Variable(tf.zeros([2]), name="Bias1")
+b2 = tf.Variable(tf.zeros([1]), name="Bias2")
 
 # Hypotheses 
-L2 =  tf.sigmoid(tf.matmul(X,W1)+b1)
-L3 = tf.sigmoid( tf.matmul(L2,W2) + b2)
-hypothesis = tf.sigmoid( tf.matmul(L3,W3) + b3)
+L1 = tf.sigmoid( tf.matmul(X,W1) + b1)
+hypothesis = tf.sigmoid( tf.matmul(L1,W2) + b2)
 
 # Cost function 
 cost = -tf.reduce_mean( Y*tf.log(hypothesis)+(1-Y)* tf.log(1.-hypothesis) )
