@@ -1,0 +1,2 @@
+# W1 = tf.get_variable("W1",shape=[2, 10]
+#                  ,initializer=tf.contrib.layers.xavier_initializer(2,10))
