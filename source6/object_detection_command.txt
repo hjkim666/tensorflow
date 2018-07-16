@@ -1,0 +1,27 @@
+https://github.com/tensorflow/models
+
+https://github.com/google/protobuf/releases
+
+D:\models\research 에 protoc3.5.1.zip 풀기
+              +bin
+              +include
+
+D:\models\research>bin\protoc object_detection/protos/*.proto --python_out=.
+
+D:\models\research\object_detection\protos에 있는 ~.py를  D:\models\research 로 이동
+
+D:\models\research> set path=D:\models\research;D:\models\research\slim;%PATH%
+
+D:\models\research>python object_detection\builders\model_builder_test.py
+Traceback (most recent call last):
+  File "object_detection\builders\model_builder_test.py", line 21, in <module>
+    from object_detection.builders import model_builder
+ModuleNotFoundError: No module named 'object_detection'
+
+D:\models\research>jupyter notebook
+
+D:\models\research\object_detection\object_detection_tutorial.ipynb 열고 실행
+
+혹시 에러가 난다면 pip install utils
+
+
