@@ -44,19 +44,20 @@ h_conv2 = tf.nn.relu(tf.nn.conv2d(h_pool1, W_conv2, strides=[1, 1, 1, 1], paddin
 
 # 두번째 pooling layer.
 h_pool2 = tf.nn.max_pool(h_conv2, ksize=[1, 3, 3, 1], strides=[1, 2, 2, 1], padding='SAME')
+#hbn2 = tf.contrib.layers.batch_norm(h_pool2, center=True, scale=True,is_training=True, scope='bn')
 
 # 세번째 convolutional layer
 W_conv3 = tf.Variable(tf.truncated_normal(shape=[3, 3, 64, 128], stddev=5e-2))
 h_conv3 = tf.nn.relu(tf.nn.conv2d(h_pool2, W_conv3, strides=[1, 1, 1, 1], padding='SAME'))
 h_pool3 = tf.nn.max_pool(h_conv3, ksize=[1, 3, 3, 1], strides=[1, 2, 2, 1], padding='SAME')
-hbn3 = tf.contrib.layers.batch_norm(h_pool3, center=True, scale=True,is_training=True, scope='bn')
+hbn3 = tf.contrib.layers.batch_norm(h_pool3, center=True, scale=True,is_training=True, scope='bn',reuse=tf.AUTO_REUSE)
 
 # 네번째 convolutional layer
 W_conv4 = tf.Variable(tf.truncated_normal(shape=[3, 3, 128, 128], stddev=5e-2))
 h_conv4 = tf.nn.relu(tf.nn.conv2d(hbn3, W_conv4, strides=[1, 1, 1, 1], padding='SAME'))
 h_pool4 = tf.nn.max_pool(h_conv4, ksize=[1, 2, 2, 1], strides=[1, 1, 1, 1], padding='SAME')
 
-hbn4 = tf.contrib.layers.batch_norm(h_pool4, center=True, scale=True,is_training=True, scope='bn', reuse=True)
+hbn4 = tf.contrib.layers.batch_norm(h_pool4, center=True, scale=True,is_training=True, scope='bn', reuse=tf.AUTO_REUSE)
 
 
 # 다섯번째 convolutional layer
@@ -65,7 +66,7 @@ h_conv5 = tf.nn.relu(tf.nn.conv2d(hbn4, W_conv5, strides=[1, 1, 1, 1], padding='
 h_pool5 = tf.nn.max_pool(h_conv5, ksize=[1, 2, 2, 1], strides=[1, 1, 1, 1], padding='SAME')
 
 print(h_pool5)
-hbn = tf.contrib.layers.batch_norm(h_pool5, center=True, scale=True,is_training=True, scope='bn', reuse=True)
+hbn = tf.contrib.layers.batch_norm(h_pool5, center=True, scale=True,is_training=True, scope='bn', reuse=tf.AUTO_REUSE)
 
 # Fully Connected Layer 1 -- 2번의 downsampling 이후에, 우리의 32x32 이미지는 8x8x128 특징맵(feature map)이 된다.
 # 이를 384개의 특징들로 맵핑(maping)한다.
