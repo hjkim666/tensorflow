@@ -1,0 +1,21 @@
+### image detection
+https://pjreddie.com/darknet/yolo/
+
+### Ω∫≈∏¿œ»≠«≥ 
+https://www.youtube.com/watch?v=Khuj4ASldmU
+
+### GAN
+https://www.youtube.com/watch?v=rs3aI7bACGc
+https://www.youtube.com/watch?v=Ol-dNwCyvw0
+https://github.com/hindupuravinash/the-gan-zoo
+
+### segnet 
+https://www.youtube.com/watch?v=CxanE_W46ts
+
+### Reinforcement Learning
+https://www.youtube.com/watch?v=mRpX9DFCdwI
+http://computingkoreanlab.com/app/jAI/jQLearning/
+https://cs.stanford.edu/people/karpathy/reinforcejs/gridworld_dp.html
+
+
+
